@@ -1,0 +1,12 @@
+[Unit]
+Description=Jack audio server 
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+User=recbox
+PrivateTmp=true
+Environment="JACK_NO_AUDIO_RESERVATION=1"
+ExecStart=/usr/bin/jackd -R -r 44800 -d alsa -d hw:USB

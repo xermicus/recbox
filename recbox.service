@@ -1,0 +1,14 @@
+[Unit]
+Description=recbox audio recorder
+Requires=jackd.service
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+User=recbox
+Environment="RECBOX_OUT_DIR=/home/recbox/rec"
+Environment="RUST_LOG=INFO"
+ExecStartPre=/bin/sleep 1
+ExecStart=/home/recbox/.cargo/bin/recbox
